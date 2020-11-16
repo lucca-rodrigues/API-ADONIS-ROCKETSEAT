@@ -18,17 +18,23 @@ class ResetPasswordController {
 
       await Mail.send(
         ['emails.reset_password'],
-        {email, token: user.token, link: `${request.input('redirect_url')}?token=${user.token}`},
+        {
+          email,
+          token: user.token,
+          link: `${request.input('redirect_url')}?token=${user.token}`
+        },
         message => {
           message
           .to(user.email)
-          .from('contato.luccarodrigues@gmail.com', 'Lucas | Rocketseat')
+          .from('contato.luccarodrigues@gmail.com', 'Lucas Rodrigues')
           .subject('Recuperação de senha')
         }
       )
       // return response.status(200).send({ message: 'Solicitação de senha realizada com sucesso!'})
-    } catch (error) {
-        return response.status(error.status).send({ error: { message: 'Ops! Algo de errado não esta certo!'}})
+    } catch (err) {
+      return response
+        .status(err.status)
+        .send({ error: { message: 'Algo não deu certo, esse e-mail existe?' } })
     }
   }
 
@@ -47,8 +53,8 @@ class ResetPasswordController {
       user.token = null
       user.token_created_at = null
       user.password = password
-
       await user.save()
+      return response.status(200).send({message: 'Senha atualizada com sucesso!'})
 
     } catch (error) {
       return response.status(error.status).send({ error: { message: 'Ops! Ocorreu um erro ao alterar a senha!'}})
