@@ -10,7 +10,9 @@ class FileController {
 
       const upload = request.file('file', {size: '2mb'})
       const fileName = `${Date.now()}.${upload.subtype}` // Renomeia o arquivo para a data da criação.extension
-      await upload.moved(Helpers.tmpPath('uploads'))
+      await upload.moved(Helpers.tmpPath('uploads'), {
+        name: fileName
+      })
 
       if(!upload.moved()){
         throw upload.error()
@@ -25,9 +27,10 @@ class FileController {
       return file
 
     } catch (error) {
-        return response
-          .status(error.status)
-          .send({ error: { message: 'Erro no upload do arquivo'}})
+      console.log(error);
+      return response
+      .status(error.status)
+      .send({ error: { message: 'Erro no upload do arquivo'}})
     }
   }
 }
