@@ -8,10 +8,14 @@ class FileController {
     try {
       if(!request.file('file')) return
         // Se não te arquivo
-        const upload = request.file('file', {size: '2mb'})
+        const upload = request.file('file', { size: '2mb' })
         const fileName = `${Date.now()}.${upload.subtype}`
           // Renomeia o arquivo para a data da criação.extension
         await upload.moved(Helpers.tmpPath('uploads'), {
+          name: fileName
+        })
+
+        await upload.move(Helpers.tmpPath('uploads'), {
           name: fileName
         })
 
