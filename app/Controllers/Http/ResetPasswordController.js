@@ -32,6 +32,7 @@ class ResetPasswordController {
       )
       // return response.status(200).send({ message: 'Solicitação de senha realizada com sucesso!'})
     } catch (err) {
+      console.log(err)
       return response
         .status(err.status)
         .send({ error: { message: 'Algo não deu certo, esse e-mail existe?' } })
