@@ -3,8 +3,7 @@
 const Route = use('Route')
 
 Route.get('users', 'UserController.index')
-Route.post('users', 'UserController.store')
-
+Route.post('users', 'UserController.store').validator('User')
 Route.post('sessions', 'SessionController.store')
 
 Route.post('passwords', 'ResetPasswordController.store')
