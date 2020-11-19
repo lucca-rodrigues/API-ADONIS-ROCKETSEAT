@@ -2,6 +2,7 @@
 
 const Env = use('Env')
 const Youch = use('Youch')
+const BaseExceptionHandler = use('BaseExceptionHandler')
 
 class ExceptionHandler extends BaseExceptionHandler {
 
