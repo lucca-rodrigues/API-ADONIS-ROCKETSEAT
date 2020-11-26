@@ -2,7 +2,7 @@
 const Database = use('Database')
 const User = use('App/Models/User')
 class UserController {
-  async index ({ request , response}){
+  async index ({ response}){
    try {
       const users = User.all()
       return users
