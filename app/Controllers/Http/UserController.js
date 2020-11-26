@@ -4,8 +4,8 @@ const User = use('App/Models/User')
 class UserController {
   async index ({ request , response}){
    try {
-      const data = request.all()
-      return data
+      const users = User.all()
+      return users
 
    } catch (err) {
       return response.status(err.status).send({ error: { message: 'Ops! Ocorreu um erro ao Listar os usuários!'}})
