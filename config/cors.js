@@ -16,7 +16,11 @@ module.exports = {
   | Function - Receives the current origin and should return one of the above values.
   |
   */
-  origin: false,
+  origin: true,
+  // Quais dominios são permitidos acessar a api
+  // False = apenas aplicacões com o mesmo endereço
+  // True = todas as url
+  // ['url da aplicacao', 'url da aplicaco' ] = url específicas
 
   /*
   |--------------------------------------------------------------------------
@@ -48,6 +52,7 @@ module.exports = {
   |
   */
   headers: true,
+  // Hearders = todos os Headers
 
   /*
   |--------------------------------------------------------------------------
