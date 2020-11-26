@@ -1,7 +1,6 @@
 'use strict'
 const Antl = use('Antl')
-
-class Sessions {
+class Session {
   get validateAll () {
     return true
   }
@@ -18,4 +17,4 @@ class Sessions {
   }
 }
 
-module.exports = Sessions
+module.exports = Session
